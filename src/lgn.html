@@ -1,11 +1,44 @@
-<html>
-	<head>
-		<title>Lodin Motors</title>
-	</head>
-	<body>
-		<h1>Inicio de sesión</h1>
-		<p>Usuario</p><input type="text"></input>
-		<p>Contraseña</p><input type="text"></input>
-		<button>Ingresar</button>
-	</body>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <title>Login Motors</title>
+</head>
+<body>
+    <h1>Inicio de sesión</h1>
+    <form id="loginForm">
+        <p>Usuario</p><input type="text" name="usuario" id="usuario">
+        <p>Contraseña</p><input type="password" name="contrasena" id="contrasena">
+        <button type="submit">Ingresa</button>
+    </form>
+    
+    <script>
+      	const API_URL = 'http://localhost:3000/login';
+
+    	document.getElementById('loginForm').addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			const correo = document.getElementById('usuario').value;
+			const password = document.getElementById('contrasena').value;
+
+			try {
+				const response = await fetch(API_URL, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ correo, password })
+				});
+
+				const data = await response.json();
+
+				if (response.ok) {
+					console.log("Estoy dentro");
+				} else {
+					console.log("Estoy fuera");
+				}
+			} catch (error) {
+				console.error(error);
+				document.getElementById('mensaje').textContent = 'Error de conexión';
+			}
+		});
+    </script>
+</body>
 </html>
