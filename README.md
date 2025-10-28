@@ -5,4 +5,5 @@ Proyecto para cotizaciones de la empresa Lodin
 1. Instalar XAMPP
 2. Arrancar los servicios de MySQL
 3. Dirigirse a http://localhost/phpmyadmin/ y en SQL ejecutar el Script
-4. En Visual Studio Code iniciar con npm install 
+4. En Visual Studio Code iniciar con npm install
+5. Para iniciar el servicio de Node se ejecuta en la terminal: *node src/js/server.js*
