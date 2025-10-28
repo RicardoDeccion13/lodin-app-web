@@ -1,0 +1,128 @@
+/*Estilos Globales y Fondo */
+body {
+     font-family: Arial, sans-serif;
+    background: #0d47a1; 
+    background: radial-gradient(circle, #1565c0 0%, #0d47a1 100%); 
+    color: white;
+    margin: 0;
+    min-height: 100vh;
+}
+
+/*Contenedor Principal del Login */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 40px 20px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+/*Estilos del Logo */
+.header-logo {
+    position: absolute; 
+    top: 20px;
+    left: 20px;
+    text-align: left; 
+    margin-bottom: 0;
+}
+
+.logo-image {
+    width: 150px;
+    height: auto;
+}
+
+.logo-text {
+    font-size: 10px;
+    margin-top: 5px;
+    color: #e0e0e0;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    text-align: left;
+}
+
+/*Icono Principal*/
+.icon-group {
+    margin-bottom: 50px;
+    height: 100px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.main-icon-image {
+    width: 120px; 
+    height: auto;
+}
+
+/*Estilos del Formulario y Inputs */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/*Estilo para los iconos */
+.input-group .icon {
+    position: absolute;
+    left: 15px;
+    color: #fff; 
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 50px; 
+    border: 2px solid #fff; 
+    background: rgba(255, 255, 255, 0);
+    color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/*Estilo para el texto placeholder */
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+}
+
+/*Estilo del Botón */
+.login-button {
+    padding: 15px;
+    background-color: #fff; 
+    color: #264ECA; 
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    margin-top: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); 
+}
+
+.login-button:hover {
+    background-color: #f0f0f0;
+}
+
+/*Estilo del Enlace "¿Olvidaste tu contraseña?" */
+.forgot-password {
+    display: block;
+    margin-top: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
