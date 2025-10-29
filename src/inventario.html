@@ -1,0 +1,105 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Motors</title>
+</head>
+<body>
+    <h1>Inventario</h1>
+    <input type="text" id="modelo" placeholder="Modelo" />
+    <button id="buscarBtn">Buscar</button>
+    <button>Agregar</button>
+    <br><br>
+    <table border="1"> 
+        <thead>
+            <tr>
+                <th>ID de producto</th>
+                <th>Modelo</th>
+                <th>Descripción</th>
+                <th>No. de Serie</th>
+                <th>Precio</th>
+                <th>Fecha de compra</th>
+                <th>Piezas disponible</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="productosBody">
+        </tbody>
+    </table>
+    <script>
+        const API_URL = 'http://localhost:3000/api/invt/inv';
+        
+        function escapeHtml(str){
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        async function pt_prod(producto){
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ producto })
+                });
+
+                const data = await response.json();
+
+                const body = document.getElementById('productosBody');
+
+                if (response.ok) {
+                    const results = data.results || [];
+                     if (results.length === 0) {
+                        body.innerHTML = '<tr><td colspan="9">No hay productos</td></tr>';
+                    } else {
+                        body.innerHTML = results.map(item => {
+                            const id = item.id_producto ?? item.id ?? item.ID ?? '';
+                            const modelo = item.modelo_producto ?? item.modelo ?? '';
+                            const descripcion = item.descripcion_producto ?? item.descripcion ?? '';
+                            const noSerie = item.numero_serie ?? item.serial ?? '';
+                            const precio = item.precio_producto ?? item.price ?? '';
+                            const fecha = item.Fecha_compra ?? item.fecha ?? '';
+                            const piezas = item.piezas_disponibles ?? item.stock ?? item.cantidad ?? '';
+
+                            return `<tr>
+                                <td>${escapeHtml(id)}</td>
+                                <td>${escapeHtml(modelo)}</td>
+                                <td>${escapeHtml(descripcion)}</td>
+                                <td>${escapeHtml(noSerie)}</td>
+                                <td>${escapeHtml(precio)}</td>
+                                <td>${escapeHtml(fecha)}</td>
+                                <td>${escapeHtml(piezas)}</td>
+                                <td><button data-id="${escapeHtml(id)}" class="editBtn">Editar</button></td>
+                                <td><button data-id="${escapeHtml(id)}" class="delBtn">Eliminar</button></td>
+                            </tr>`;
+                        }).join('');
+                    }
+                 } else {
+                    body.innerHTML = '<tr><td colspan="9">No hay productos</td></tr>';
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('La página está lista');
+
+            let producto = document.getElementById('modelo').value;
+            console.log(producto);
+            pt_prod(producto);
+        });
+    
+        document.getElementById('buscarBtn').addEventListener('click', () => {
+            let producto = document.getElementById('modelo').value;
+            console.log(producto);
+            pt_prod(producto);
+        });
+        
+    </script>
+</body>
+</html>
