@@ -1,16 +1,41 @@
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
-    <title>Login Motors</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login LODIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/LoginStyles.css"> 
 </head>
 <body>
-    <h1>Inicio de sesión</h1>
-    <form id="loginForm">
-        <p>Usuario</p><input type="text" name="usuario" id="usuario">
-        <p>Contraseña</p><input type="password" name="contrasena" id="contrasena">
-        <button type="submit">Ingresa</button>
-    </form>
-    
+    <div class="login-container">
+        <div class="header-logo">
+            <img src="IMG/LOGOLodin.png" alt="Logo LODIN" class="logo-image">
+            <p class="logo-text">Distribuidor de motores e inversores industriales</p>
+        </div>
+
+    <div class="icon-group">
+        <img src="IMG/IconoLogin3.png" alt="Icono de trabajador y engranajes" class="main-icon-image">
+    </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <i class="fa-solid fa-user icon"></i>
+                <input type="text" name="usuario" id="usuario" placeholder="USUARIO">
+            </div>
+            
+            <div class="input-group">
+                <i class="fa-solid fa-lock icon"></i>
+                <input type="password" name="contrasena" id="contrasena" placeholder="CONTRASEÑA">
+            </div>
+
+            <button type="submit" class="login-button">INICIAR SESIÓN</button>
+        </form>
+        
+        <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        
+        <p id="mensaje" style="color: red; margin-top: 10px;"></p>
+    </div>
+
     <script>
       	const API_URL = 'http://localhost:3000/login';
 
