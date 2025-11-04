@@ -5,101 +5,59 @@
 </head>
 <body>
     <h1>Inventario</h1>
-    <input type="text" id="modelo" placeholder="Modelo" />
-    <button id="buscarBtn">Buscar</button>
-    <button>Agregar</button>
-    <br><br>
-    <table border="1"> 
-        <thead>
-            <tr>
-                <th>ID de producto</th>
-                <th>Modelo</th>
-                <th>Descripción</th>
-                <th>No. de Serie</th>
-                <th>Precio</th>
-                <th>Fecha de compra</th>
-                <th>Piezas disponible</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody id="productosBody">
-        </tbody>
-    </table>
-    <script>
-        const API_URL = 'http://localhost:3000/api/invt/inv';
-        
-        function escapeHtml(str){
-            if (str == null) return '';
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#039;');
-        }
+    <div id="listadoProductos" >   
+        <input type="text" id="modelo" placeholder="Modelo" />
+        <button id="buscarBtn">Buscar</button><br>
+        <button onclick="agregarProducto(1,0);">Agregar</button>
+        <br><br>
+        <table border="1"> 
+            <thead>
+                <tr>
+                    <th>ID de producto</th>
+                    <th>Modelo</th>
+                    <th>Descripción</th>
+                    <th>No. de Serie</th>
+                    <th>Precio</th>
+                    <th>Fecha de compra</th>
+                    <th>Piezas disponible</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="productosBody">
+            </tbody>
+        </table>
+    </div>
 
-        async function pt_prod(producto){
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ producto })
-                });
+    <div id="i_d_productos" style="display:none;">
+        <form id="campos_productos">
 
-                const data = await response.json();
+            <label for="id_producto">ID:</label>
+            <input id="id_producto" disabled/><br />
 
-                const body = document.getElementById('productosBody');
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo_producto" required /><br />
 
-                if (response.ok) {
-                    const results = data.results || [];
-                     if (results.length === 0) {
-                        body.innerHTML = '<tr><td colspan="9">No hay productos</td></tr>';
-                    } else {
-                        body.innerHTML = results.map(item => {
-                            const id = item.id_producto ?? item.id ?? item.ID ?? '';
-                            const modelo = item.modelo_producto ?? item.modelo ?? '';
-                            const descripcion = item.descripcion_producto ?? item.descripcion ?? '';
-                            const noSerie = item.numero_serie ?? item.serial ?? '';
-                            const precio = item.precio_producto ?? item.price ?? '';
-                            const fecha = item.Fecha_compra ?? item.fecha ?? '';
-                            const piezas = item.piezas_disponibles ?? item.stock ?? item.cantidad ?? '';
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion_producto" required /><br />
 
-                            return `<tr>
-                                <td>${escapeHtml(id)}</td>
-                                <td>${escapeHtml(modelo)}</td>
-                                <td>${escapeHtml(descripcion)}</td>
-                                <td>${escapeHtml(noSerie)}</td>
-                                <td>${escapeHtml(precio)}</td>
-                                <td>${escapeHtml(fecha)}</td>
-                                <td>${escapeHtml(piezas)}</td>
-                                <td><button data-id="${escapeHtml(id)}" class="editBtn">Editar</button></td>
-                                <td><button data-id="${escapeHtml(id)}" class="delBtn">Eliminar</button></td>
-                            </tr>`;
-                        }).join('');
-                    }
-                 } else {
-                    body.innerHTML = '<tr><td colspan="9">No hay productos</td></tr>';
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
+            <label for="numero_serie">No. de Serie:</label>
+            <input type="text" id="numero_serie_producto" required /><br />
 
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('La página está lista');
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio_producto" step="0.01" required /><br />
 
-            let producto = document.getElementById('modelo').value;
-            console.log(producto);
-            pt_prod(producto);
-        });
-    
-        document.getElementById('buscarBtn').addEventListener('click', () => {
-            let producto = document.getElementById('modelo').value;
-            console.log(producto);
-            pt_prod(producto);
-        });
-        
-    </script>
+            <label for="fecha_compra">Fecha de compra:</label>
+            <input type="date" id="fecha_compra_producto" required /><br />
+
+            <label for="piezas_disponible">Piezas disponible:</label>
+            <input type="number" id="piezas_disponible_producto" required /><br />
+
+            <button type="button" id="guardarBtn" onclick="save_prod();">Guardar</button>
+            <button type="button" id="cancelarBtn">Cancelar</button>
+        </form>
+    </div>
+    <input type="hidden" id="operacion" value="0" />
+    <script src="js/stock.js"></script>
 </body>
 </html>
