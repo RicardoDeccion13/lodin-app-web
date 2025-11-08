@@ -2,32 +2,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Motors</title>
+       <link rel="stylesheet" href="css/style2.css"> </head>
+
 </head>
-<body>
-    <h1>Inventario</h1>
-    <div id="listadoProductos" >   
+<body class="inventario-iframe">
+    <div id="listadoProductos">
+    <div class="controles-busqueda">
         <input type="text" id="modelo" placeholder="Modelo" />
-        <button id="buscarBtn">Buscar</button><br>
-        <button onclick="agregarProducto(1,0);">Agregar</button>
-        <br><br>
-        <table border="1"> 
-            <thead>
-                <tr>
-                    <th>ID de producto</th>
-                    <th>Modelo</th>
-                    <th>Descripción</th>
-                    <th>No. de Serie</th>
-                    <th>Precio</th>
-                    <th>Fecha de compra</th>
-                    <th>Piezas disponible</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
-                </tr>
-            </thead>
-            <tbody id="productosBody">
-            </tbody>
-        </table>
+        <button id="buscarBtn">Buscar</button>
+        <button onclick="agregarProducto(1,0);" class="btn-agregar">Agregar Producto</button>
     </div>
+    
+    <table class="productos-table">
+        <thead>
+            <tr>
+                <th>ID de producto</th>
+                <th>Modelo</th>
+                <th>Descripción</th>
+                <th>No. de Serie</th>
+                <th>Precio</th>
+                <th>Fecha de compra</th>
+                <th>Piezas disponible</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="productosBody">
+            <!-- Los datos se llenarán desde la BD -->
+        </tbody>
+    </table>
+</div>
 
     <div id="i_d_productos" style="display:none;">
         <form id="campos_productos">

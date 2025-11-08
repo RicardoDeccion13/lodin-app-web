@@ -23,7 +23,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         if (response.ok) {
             console.log("Estoy dentro");
             alert('Inicio de sesión exitoso');
-            window.location.href = 'https://localhost/lodin-proyect/lodin-app-web/src/cotizaciones.html';
+            window.location.href = 'https://localhost/lodin-proyect/lodin-app-web/src/index.html';
         } else {
             console.log("Estoy fuera");
         }

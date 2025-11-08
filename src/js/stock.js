@@ -53,8 +53,8 @@ async function pt_prod(producto){
                         <td>$${escapeHtml(precio)}</td>
                         <td>${escapeHtml(fecha)}</td>
                         <td>${escapeHtml(piezas)}</td>
-                        <td><button data-id="${escapeHtml(id)}" class="editBtn" onclick="agregarProducto(2,'${escapeHtml(id)}');">Editar</button></td>
-                        <td><button data-id="${escapeHtml(id)}" class="delBtn" onclick="delete_prod('${escapeHtml(id)}');">Eliminar</button></td>
+                        <td><button class="btn-editar" data-id="${escapeHtml(id)}" onclick="agregarProducto(2,'${escapeHtml(id)}');">Editar</button></td>
+                        <td><button class="btn-eliminar" data-id="${escapeHtml(id)}" onclick="delete_prod('${escapeHtml(id)}');">Eliminar</button></td>
                     </tr>`;
                 }).join('');
             }
