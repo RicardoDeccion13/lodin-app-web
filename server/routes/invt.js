@@ -41,7 +41,6 @@ router.post('/inv', (req, res) => {
 
 router.post('/save_prod', (req, res) => {
     const {
-        id_producto,
         modelo_producto,
         descripcion_producto,
         numero_serie_producto,
@@ -119,5 +118,23 @@ router.post('/delete_prod', (req, res) => {
         res.json({ message: 'Producto eliminado exitosamente' });
     });
 });
+
+router.post('/cb_tmp', (req, res) => {
+    const sql_ = `SELECT id_temporada, nombre_temporada FROM TEMPORADA_PRECIOS;`;
+    const params_ = [];
+    db.query(sql_, params_, (err, results) => {
+        if (err) {
+            console.error('Error al ejecutar consulta:', err);
+            return res.status(500).json({ error: 'Error en la base de datos' });
+        }
+
+        if (results.length > 0) {
+            res.json({ results });
+        } else {
+            res.status(401).json({ error: 'No se encontraron similitudes' });
+        }
+    });
+});
+
 
 module.exports = router;

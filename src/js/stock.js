@@ -27,12 +27,7 @@ async function pt_prod(producto){
         if (response.ok) {
             results = data.results || [];
 
-            const ids = results.map(item => item.id_producto ?? item.id ?? item.ID).filter(id => typeof id === 'number');
-            const ultID = Math.max(...ids);
-            console.log('ID más alto:', ultID);
-            document.getElementById("id_producto").value = ultID + 1;
 
-            
             if (results.length === 0) {
                 body.innerHTML = '<tr><td colspan="9">No hay productos</td></tr>';
             } else {
@@ -81,10 +76,31 @@ document.getElementById('buscarBtn').addEventListener('click', () => {
 });
 
 
-function agregarProducto(edicion, id_producto) {
+async function agregarProducto(edicion, id_producto) {
     document.getElementById("i_d_productos").style.display = "block";
     document.getElementById("listadoProductos").style.display = "none";
     document.getElementById("operacion").value = edicion; // 1 para agregar, 2 para editar
+
+    const response = await fetch('http://localhost:3000/api/invt/cb_tmp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+    if(response.ok){
+        let res_temp = [];
+        const data = await response.json();
+        res_temp = data.results || [];
+        const temporadaSelect = document.getElementById("temporada_precios");
+        temporadaSelect.innerHTML = '<option value="0">Seleccione una opción</option>';
+        
+        res_temp.forEach(item => {
+            const option = document.createElement("option");
+            option.value = item.id_temporada;
+            option.text = item.nombre_temporada;
+            temporadaSelect.appendChild(option);
+        });
+    }
+
     if (edicion === 2) {
         console.log("Voy a editar el producto con ID:", id_producto);
         
@@ -94,13 +110,14 @@ function agregarProducto(edicion, id_producto) {
         });
 
         if (productoEncontrado) {  
-            document.getElementById("id_producto").value = productoEncontrado.id_producto ?? productoEncontrado.id ?? productoEncontrado.ID ?? '';
+            //document.getElementById("id_producto").value = productoEncontrado.id_producto ?? productoEncontrado.id ?? productoEncontrado.ID ?? '';
             document.getElementById("modelo_producto").value = productoEncontrado.modelo_producto ?? productoEncontrado.modelo ?? '';
             document.getElementById("descripcion_producto").value = productoEncontrado.descripcion_producto ?? productoEncontrado.descripcion ?? '';
             document.getElementById("numero_serie_producto").value = productoEncontrado.numero_serie ?? productoEncontrado.serial ?? '';
             document.getElementById("precio_producto").value = productoEncontrado.precio_producto ?? productoEncontrado.price ?? '';
             document.getElementById("fecha_compra_producto").value = productoEncontrado.Fecha_compra ?? productoEncontrado.fecha ?? '';
             document.getElementById("piezas_disponible_producto").value = productoEncontrado.piezas_disponibles ?? productoEncontrado.stock ?? productoEncontrado.cantidad ?? '';
+            document.getElementById("temporada_precios").value = productoEncontrado.id_temporada ?? '0';
         }
     } 
 }
@@ -108,17 +125,14 @@ function agregarProducto(edicion, id_producto) {
 document.getElementById("cancelarBtn").addEventListener("click", () => {
     document.getElementById("i_d_productos").style.display = "none";
     document.getElementById("listadoProductos").style.display = "block";
-    const idField = document.getElementById("id_producto");
-    const idValue = idField.value;
     document.getElementById("campos_productos").reset();
-    idField.value = idValue;
 });
 
 
 async function save_prod(){
     console.log("Guardando producto...");
     try {
-        const id_producto = document.getElementById("id_producto").value;
+        //const id_producto = document.getElementById("id_producto").value;
         const modelo_producto = document.getElementById("modelo_producto").value;
         const descripcion_producto = document.getElementById("descripcion_producto").value;
         const numero_serie_producto = document.getElementById("numero_serie_producto").value;
@@ -128,7 +142,6 @@ async function save_prod(){
         const operacion = document.getElementById("operacion").value; 
 
         const productoData = {
-            id_producto,
             modelo_producto,
             descripcion_producto,
             numero_serie_producto,
@@ -137,6 +150,16 @@ async function save_prod(){
             piezas_disponible_producto,
             operacion
         };
+
+        const camposFaltantes = Object.keys(productoData).filter(campo => {
+            const valor = productoData[campo];
+            return valor === undefined || valor === null || valor === '';
+        });
+
+        if (camposFaltantes.length > 0) {
+            alert(`Faltan los siguientes campos: ${camposFaltantes.join(', ')}`);
+            return;
+        }
 
         console.log('Datos del producto a guardar:', productoData);
 

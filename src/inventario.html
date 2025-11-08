@@ -34,32 +34,52 @@
 </div>
 
     <div id="i_d_productos" style="display:none;">
-        <form id="campos_productos">
+        <h3>Información del producto</h3>
+          <div class="form-container">
+            
+            <form id="campos_productos">
+                <div class="form-group">
+                    <label for="modelo_producto">Modelo:</label>
+                    <input type="text" id="modelo_producto" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="descripcion_producto">Descripción:</label>
+                    <input type="text" id="descripcion_producto" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="numero_serie_producto">No. de Serie:</label>
+                    <input type="text" id="numero_serie_producto" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="precio_producto">Precio:</label>
+                    <input type="number" id="precio_producto" step="0.01" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_compra_producto">Fecha de compra:</label>
+                    <input type="date" id="fecha_compra_producto" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="piezas_disponible_producto">Piezas disponible:</label>
+                    <input type="number" id="piezas_disponible_producto" required />
+                </div>
 
-            <label for="id_producto">ID:</label>
-            <input id="id_producto" disabled/><br />
-
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo_producto" required /><br />
-
-            <label for="descripcion">Descripción:</label>
-            <input type="text" id="descripcion_producto" required /><br />
-
-            <label for="numero_serie">No. de Serie:</label>
-            <input type="text" id="numero_serie_producto" required /><br />
-
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio_producto" step="0.01" required /><br />
-
-            <label for="fecha_compra">Fecha de compra:</label>
-            <input type="date" id="fecha_compra_producto" required /><br />
-
-            <label for="piezas_disponible">Piezas disponible:</label>
-            <input type="number" id="piezas_disponible_producto" required /><br />
-
-            <button type="button" id="guardarBtn" onclick="save_prod();">Guardar</button>
-            <button type="button" id="cancelarBtn">Cancelar</button>
-        </form>
+                <div class="form-group">
+                    <label for="temporada_precios">Temporada de precios:</label>
+                    <select id="temporada_precios" name="Temporada">
+                    </select>
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="cancelarBtn" class="btn-white">Cancelar</button>
+                    <button type="button" id="guardarBtn" class="btn-confirm" onclick="save_prod();">Guardar</button>
+                </div>
+            </form>
+        </div>
     </div>
     <input type="hidden" id="operacion" value="0" />
     <script src="js/stock.js"></script>
