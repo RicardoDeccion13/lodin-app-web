@@ -2,25 +2,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Motors</title>
+       <link rel="stylesheet" href="css/style2.css"> </head>
+
 </head>
-<body>
-    <h1>Cotizaciones</h1>
-    <button>Nueva cotización</button>
-    <br><br>
-    <table border="1"> 
+<body class="inventario-iframe">
+    <div id="listadoCotizaciones">
+    <div class="controles-busqueda">
+        <!--input type="text" id="modelo" placeholder="Modelo" />
+        <button id="buscarBtn">Buscar</button-->
+        <button onclick="agregarCotizacion();" class="btn-agregar">Agregar Cotización</button>
+    </div>
+    
+    <table class="productos-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Fecha</th>
-                <th>Cliente</th>
-                <th>Total</th>
-                <th>Estatus</th>
                 <th>PDF</th>
+                <th>ID de cotización</th>
+                <th>Fecha de cotización</th>
+                <th>Cliente</th>
+                <th>Usuario</th>
+                <th>Subtotal</th>
+                <th>IVA</th>
+                <th>Total</th>
+                <th>Status</th>
                 <th>Editar</th>
-                <th>Eliminar</th>
             </tr>
         </thead>
+        <tbody id="cotizacionesBody">
+        </tbody>
     </table>
+</div>
+
+<div id="i_d_cotizaciones" style="display:none;">
+        <h3>Información de la cotización</h3>
+          <div class="form-container">
+            <form id="campos_productos">
+                <input type="hidden" id="id_cotizacion" />
+                <div class="form-group">
+                    <label for="fecha_cotizacion">Fecha de cotización:</label>
+                    <input type="date" id="fecha_cotizacion" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="cliente_select">Cliente:</label>
+                    <select id="cliente_select" name="Cliente">
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="select_usuario">Usuario que registra:</label>
+                    <select id="select_usuario" name="Usuario">
+                    </select>
+                </div>
+
+                <!--div class="form-group">
+                    <label for="select_status">Estado de la cotización:</label>
+                    <select id="select_status" name="status">
+                        <option value="0">Seleccione una opción</option>
+                        <option value="En espera">En espera</option>
+                        <option value="Aceptada">Aceptada</option>
+                        <option value="Rechazada">Rechazada</option>
+                    </select> Si se crea, no mostrar status. Si se edita, mostrar status.
+                </div-->
+                                
+                <div class="buttons">
+                    <button type="button" id="cancelarBtn_cot" class="btn-white">Cancelar</button>
+                    <button type="button" id="guardarBtn_cot" class="btn-confirm">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div-->
+    <input type="hidden" id="operacion" value="0" />
     <script src="js/cot.js"></script>
 </body>
 </html>

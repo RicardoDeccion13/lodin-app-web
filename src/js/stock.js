@@ -110,7 +110,7 @@ async function agregarProducto(edicion, id_producto) {
         });
 
         if (productoEncontrado) {  
-            //document.getElementById("id_producto").value = productoEncontrado.id_producto ?? productoEncontrado.id ?? productoEncontrado.ID ?? '';
+            document.getElementById("id_producto").value = productoEncontrado.id_producto ?? productoEncontrado.id ?? productoEncontrado.ID ?? '';
             document.getElementById("modelo_producto").value = productoEncontrado.modelo_producto ?? productoEncontrado.modelo ?? '';
             document.getElementById("descripcion_producto").value = productoEncontrado.descripcion_producto ?? productoEncontrado.descripcion ?? '';
             document.getElementById("numero_serie_producto").value = productoEncontrado.numero_serie ?? productoEncontrado.serial ?? '';
@@ -132,7 +132,7 @@ document.getElementById("cancelarBtn").addEventListener("click", () => {
 async function save_prod(){
     console.log("Guardando producto...");
     try {
-        //const id_producto = document.getElementById("id_producto").value;
+        const id_producto = document.getElementById("id_producto").value;
         const modelo_producto = document.getElementById("modelo_producto").value;
         const descripcion_producto = document.getElementById("descripcion_producto").value;
         const numero_serie_producto = document.getElementById("numero_serie_producto").value;
@@ -140,7 +140,9 @@ async function save_prod(){
         const fecha_compra_producto = document.getElementById("fecha_compra_producto").value;
         const piezas_disponible_producto = document.getElementById("piezas_disponible_producto").value;
         const operacion = document.getElementById("operacion").value; 
+        const temporada_precios = document.getElementById("temporada_precios").value;
 
+        
         const productoData = {
             modelo_producto,
             descripcion_producto,
@@ -148,6 +150,8 @@ async function save_prod(){
             precio_producto,
             fecha_compra_producto,
             piezas_disponible_producto,
+            temporada_precios,
+            id_producto,
             operacion
         };
 

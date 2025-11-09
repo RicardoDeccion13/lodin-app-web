@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 // Rutas API
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/invt', require('./routes/invt'));
+app.use('/api/ctz', require('./routes/ctz'));
 
 
 app.listen(PORT, () => {

@@ -47,6 +47,8 @@ router.post('/save_prod', (req, res) => {
         precio_producto,
         fecha_compra_producto,
         piezas_disponible_producto,
+        temporada_precios,
+        id_producto,
         operacion
     } = req.body;
 
@@ -54,15 +56,16 @@ router.post('/save_prod', (req, res) => {
     if (operacion == '1') {
         // Agregar nuevo producto
         const sqlInsert = `INSERT INTO PRODUCTO 
-            (modelo_producto, descripcion, numero_serie, precio_producto, Fecha_compra, piezas_disponibles) 
-            VALUES (?, ?, ?, ?, ?, ?)`;
+            (modelo_producto, descripcion, numero_serie, precio_producto, Fecha_compra, piezas_disponibles,id_temporada) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)`;
         const paramsInsert = [
             modelo_producto,
             descripcion_producto,
             numero_serie_producto,
             precio_producto,
             fecha_compra_producto,
-            piezas_disponible_producto
+            piezas_disponible_producto,
+            temporada_precios
         ];
 
         db.query(sqlInsert, paramsInsert, (err, result) => {
@@ -80,7 +83,8 @@ router.post('/save_prod', (req, res) => {
             numero_serie = ?, 
             precio_producto = ?, 
             Fecha_compra = ?, 
-            piezas_disponibles = ? 
+            piezas_disponibles = ?,
+            id_temporada = ? 
             WHERE id_producto = ?`;
         const paramsUpdate = [
             modelo_producto,
@@ -89,8 +93,17 @@ router.post('/save_prod', (req, res) => {
             precio_producto,
             fecha_compra_producto,
             piezas_disponible_producto,
+            temporada_precios,
             id_producto
         ];
+        
+console.log('SQL Query:', sqlUpdate.replace(/\?/g, (match) => {
+            const param = paramsUpdate.shift();
+            paramsUpdate.push(param); // restore the param
+            return typeof param === 'string' ? `'${param}'` : param;
+        }));
+        console.log('Parámetros:', paramsUpdate);
+
 
         db.query(sqlUpdate, paramsUpdate, (err, result) => {
             if (err) {

@@ -10,7 +10,9 @@
     <div class="controles-busqueda">
         <input type="text" id="modelo" placeholder="Modelo" />
         <button id="buscarBtn">Buscar</button>
-        <button onclick="agregarProducto(1,0);" class="btn-agregar">Agregar Producto</button>
+        <div style="margin-left: auto;">    
+            <button onclick="agregarProducto(1,0);" class="btn-agregar">Agregar Producto</button>
+        </div>
     </div>
     
     <table class="productos-table">
@@ -36,8 +38,8 @@
     <div id="i_d_productos" style="display:none;">
         <h3>Información del producto</h3>
           <div class="form-container">
-            
             <form id="campos_productos">
+                <input type="hidden" id="id_producto" />
                 <div class="form-group">
                     <label for="modelo_producto">Modelo:</label>
                     <input type="text" id="modelo_producto" required />
