@@ -55,15 +55,15 @@
                     </select>
                 </div>
 
-                <!--div class="form-group">
-                    <label for="select_status">Estado de la cotización:</label>
-                    <select id="select_status" name="status">
-                        <option value="0">Seleccione una opción</option>
-                        <option value="En espera">En espera</option>
-                        <option value="Aceptada">Aceptada</option>
-                        <option value="Rechazada">Rechazada</option>
-                    </select> Si se crea, no mostrar status. Si se edita, mostrar status.
-                </div-->
+                    <div class="form-group" id="status_group">
+                        <label for="select_status">Estado de la cotización:</label>
+                        <select id="select_status" name="status">
+                            <option value="0">Seleccione una opción</option>
+                            <option value="Pendiente">Pendiente</option>
+                            <option value="Aceptada">Aceptada</option>
+                            <option value="Rechazada">Rechazada</option>
+                        </select>
+                    </div>
                                 
                 <div class="buttons">
                     <button type="button" id="cancelarBtn_cot" class="btn-white">Cancelar</button>
@@ -71,7 +71,55 @@
                 </div>
             </form>
         </div>
-    </div-->
+
+        <div class="divider"></div>
+
+        <div id="detalle_cotizacion" display="none;">   
+            <h3>Detalle de la cotización</h3>
+            <div class="form-container">
+
+                    <input type="hidden" id="id_cotizacion" />
+                    <input type="hidden" id="id_detalle_cotizacion" />
+                    
+                    <button class="btn-add-prod" onclick="addColumn(event);">+</button>
+
+            <table class="products-table">
+            <thead>
+                <tr>
+                    <th width="1%"></th>
+                    <th width="40%">Producto</th>
+                    <th width="10%">Cantidad</th>
+                    <th width="20%">Precio unitario</th>
+                    <th width="20%">Totales</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+         <div class="totals-section">
+            <div class="total-row">
+                <div class="total-label">Subtotal</div>
+                <div class="total-value">$0.00</div>
+            </div>
+            <div class="total-row">
+                <div class="total-label">IVA (16%)</div>
+                <div class="total-value">$0.00</div>
+            </div>
+            <div class="total-row total-final">
+                <div class="total-label">Total</div>
+                <div class="total-value">$0.00</div>
+            </div>
+        </div>
+
+                    <div class="buttons">
+                        <button type="button" id="cancelarBtn_d_cot" class="btn-white">Cancelar</button>
+                        <button type="button" id="guardarBtn_d_cot" class="btn-confirm" onclick="save_d_ct();">Guardar</button>
+                    </div>
+            </div>
+
+        </div>
+    </div>
     <input type="hidden" id="operacion" value="0" />
     <script src="js/cot.js"></script>
 </body>
