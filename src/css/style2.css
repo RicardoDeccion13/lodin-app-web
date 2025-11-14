@@ -684,7 +684,9 @@
 }
 
 /* Botón agregar */
-#listadoProductos button[onclick*="agregarProducto"], #listadoCotizaciones button[onclick*="agregarCotizacion"] {
+#listadoProductos button[onclick*="agregarProducto"], 
+#listadoCotizaciones button[onclick*="agregarCotizacion"], 
+#listadoClientes button[onclick*="agregarCliente"] {
     padding: 10px 20px;
     background: #00a651;
     color: white;
@@ -769,7 +771,7 @@
 
 /* Botones de acción */
 .btn-editar {
-    padding: 6px 12px;
+    padding: 10px 20px;
     background: #2575fc;
     color: white;
     border: none;

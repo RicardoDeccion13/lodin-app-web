@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/invt', require('./routes/invt'));
 app.use('/api/ctz', require('./routes/ctz'));
+app.use('/api/client', require('./routes/client'));
 
 
 app.listen(PORT, () => {

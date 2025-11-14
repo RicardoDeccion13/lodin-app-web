@@ -1,0 +1,74 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Motors</title>
+       <link rel="stylesheet" href="css/style2.css"> </head>
+
+</head>
+<body class="inventario-iframe">
+    <div id="listadoClientes">
+    <div class="controles-busqueda">
+        <div style="margin-left: auto;">    
+            <button onclick="agregarCliente();" class="btn-agregar">Agregar Cliente</button>
+        </div>
+    </div>
+    <table class="productos-table">
+        <thead>
+            <tr>
+                <th>ID de cliente</th>
+                <th>Nombre de cliente</th>
+                <th>Dirección de cliente</th>
+                <th>Teléfono</th>
+                <th>Razón social</th>
+                <th>RFC</th>
+                <th>Editar</th>
+                <th>ELiminar</th>
+            </tr>
+        </thead>
+        <tbody id="clienteBody">
+            <!-- Los datos se llenarán desde la BD -->
+        </tbody>
+    </table>
+</div>
+
+    <div id="i_d_productos" style="display:none;">
+        <h3>Información del producto</h3>
+          <div class="form-container">
+            <form id="campos_productos">
+                <input type="hidden" id="id_cliente" />
+                <div class="form-group">
+                    <label for="nombre_cliente">Nombre cliente:</label>
+                    <input type="text" id="nombre_cliente" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="direccion_cliente">Direccion:</label>
+                    <input type="text" id="direccion_cliente" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefono_cliente">Teléfono del cliente:</label>
+                    <input type="text" id="telefono_cliente" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="razon_social">Razón social:</label>
+                    <input type="text" id="razon_social" required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="rfc_cliente">RFC:</label>
+                    <input type="text" id="rfc_cliente" required />
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="cancelarBtn_cliente" class="btn-white">Cancelar</button>
+                    <button type="button" id="guardarBtn_cliente" class="btn-confirm" onclick="save_cli();">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <input type="hidden" id="operacion" value="0" />
+    <script src="js/cli.js"></script>
+</body>
+</html>
