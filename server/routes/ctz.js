@@ -185,7 +185,7 @@ router.get('/get_detalle/:id', (req, res) => {
     const id_cotizacion = req.params.id;
     
     const sql = `
-        SELECT cd.id_producto, cd.cantidad, p.precio_producto as precio_unitario 
+        SELECT cd.id_producto, cd.cantidad, p.precio_producto as precio_unitario, p.modelo_producto
         FROM COTIZACION_DETALLE cd
         INNER JOIN PRODUCTO p ON cd.id_producto = p.id_producto
         WHERE cd.id_cotizacion = ?
