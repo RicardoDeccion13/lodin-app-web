@@ -1,0 +1,57 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Motors</title>
+       <link rel="stylesheet" href="css/style2.css"> </head>
+
+</head>
+<body class="inventario-iframe">
+    <div id="listadoFacturacion">
+        <div class="controles-busqueda">
+                <button onclick="agregarFactura();" class="btn-agregar">Nueva factura</button>
+        </div>
+        <table class="productos-table">
+            <thead>
+                <tr>
+                    <th>ID Factura</th>
+                    <th>Nombre de cliente</th>
+                    <th>Subtotal</th>
+                    <th>IVA</th>
+                    <th>Total</th>
+                    <th>Fecha de emisión</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody id="facturaBody">
+                <!-- Los datos se llenarán desde la BD -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i_d_facturas" style="display:none;">
+        <h3>Información del producto</h3>
+          <div class="form-container">
+            <form id="campos_productos">
+                <input type="hidden" id="id_factura" />
+
+                <div class="form-group">
+                    <label for="select_vta_fct">Número de venta a facturar:</label>
+                    <select id="select_vta_fct" name="id_venta"></select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fecha_emision">Fecha de emisión:</label>
+                    <input type="datetime-local" id="fecha_emision" required />
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="cancelarBtn_factura" class="btn-white">Cancelar</button>
+                    <button type="button" id="guardarBtn_factura" class="btn-confirm" onclick="save_fct();">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/fct.js"></script>
+</body>
+</html>

@@ -113,8 +113,37 @@ async function agregarCotizacion(id_cotizacion) {
 
     if (id_cotizacion) {
         const cotizacion = results.find(cot => cot.id_cotizacion === id_cotizacion);
-        console.log("Cotización encontrada para editar:", cotizacion);
+        console.log("Cotización encontrada para editar huevos:", cotizacion);
         if (cotizacion) {
+
+            // VERIFICAR SI LA COTIZACIÓN ESTÁ ACEPTADA
+            if (cotizacion.estado === 'Aceptada' || cotizacion.estado === 'Cancelada') {
+                alert('No se puede editar los detalles de la cotización que ya ha sido Aceptada.');
+                
+                // Deshabilitar el botón Guardar
+                const guardarBtn = document.querySelector('button[onclick*="save_d_ct"]');
+                if (guardarBtn) {
+                    guardarBtn.disabled = true;
+                    guardarBtn.style.opacity = '0.6';
+                    guardarBtn.style.cursor = 'not-allowed';
+                }
+                
+                // También deshabilitar otros controles para mayor seguridad
+                document.getElementById('select_status').disabled = true;
+                document.getElementById('select_usuario').disabled = true;
+                document.getElementById('cliente_select').disabled = true;
+                document.getElementById('fecha_cotizacion').disabled = true;
+                
+                // Deshabilitar la tabla de productos si existe
+                const productosTable = document.querySelector('.products-table');
+                if (productosTable) {
+                    const inputs = productosTable.querySelectorAll('input, select, button');
+                    inputs.forEach(input => {
+                        input.disabled = true;
+                    });
+                }
+           }
+
             const clienteSelect = document.getElementById('cliente_select');
             Array.from(clienteSelect.options).forEach(option => {
                 if (option.text === cotizacion.nombre_cliente) {
@@ -208,6 +237,7 @@ async function agregarCotizacion(id_cotizacion) {
             
         }
         document.getElementById('id_cotizacion').value = id_cotizacion;
+
     } else {
             document.getElementById('select_status').value = 'Pendiente';
             document.getElementById('select_status').disabled = true;

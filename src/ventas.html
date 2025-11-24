@@ -1,0 +1,140 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Motors</title>
+       <link rel="stylesheet" href="css/style2.css"> </head>
+
+</head>
+<body class="inventario-iframe">
+    <div id="listadoVentas">
+    <table class="productos-table">
+        <thead>
+            <tr>
+                
+                <th>ID</th>
+                <th>Cliente</th>
+                <th>Fecha de venta</th>
+                <th>Fecha de entrega</th>
+                <th>Total</th>
+                <th>Estado de venta</th>
+                <th>Detalle</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody id="ventasBody">
+            <!-- Los datos se llenarán desde la BD -->
+        </tbody>
+    </table>
+</div>
+
+    <div id="i_d_ventas" style="display:none;">
+        <h3>Editar venta:</h3>
+          <div class="form-container">
+            <form id="campos_productos">
+                <input type="hidden" id="id_venta" />
+                <div class="form-group" id="status_group">
+                        <label for="select_st_vt">Estado de la venta:</label>
+                        <select id="select_st_vt" name="status">
+                            <option value="0">Seleccione una opción</option>
+                            <option value="PREPARANDO">Preparando</option>
+                            <option value="EN CAMINO">En camino</option>
+                            <option value="ENTREGADA">Entregada</option>
+                            <option value="CANCELADA">Cancelada</option>
+                        </select>
+                    </div>
+
+                 <div class="form-group">
+                    <label for="fecha_entrega">Fecha de entrega:</label>
+                    <input type="datetime-local" id="fecha_entrega" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="observaciones">Observaciones:</label>
+                    <input type="text" id="observaciones" required />
+                </div>
+                
+                <div class="buttons">
+                    <button type="button" id="cancelarBtn_vta" class="btn-white">Cancelar</button>
+                    <button type="button" id="guardarBtn_vta" class="btn-confirm" onclick="save_vta();">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="overlay" style="display:none;">
+        <h3 class="subtitulo">Detalle de venta</h3>
+        <br>
+        <div id="detalle_venta" class="grid-info-venta">
+            <div class="info-card">
+                <div class="info-label">Nombre del cliente</div>
+                <div id="nom_cliente" class="info-value"></div>  
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">Cotizacion:</div>
+                <div id="id_cotizacion" class="info-value"></div>        
+            </div>
+
+            <div class="info-card">
+                <div class="info-label">Estado de la venta:</div>
+                <div id="estado_venta" class="info-value"></div>
+            </div>
+
+
+            <div class="info-card">
+                <div class="info-label">Fecha de la venta:</div>
+                <div id="fecha_venta" class="info-value"></div>
+            </div>
+
+
+             <div class="info-card">
+                <div class="info-label">Fecha de la entrega:</div>
+                <span id="fecha_entrega_vta"></span>
+            </div>
+
+            
+            <div class="info-card">
+                <div class="info-label">Observaciones:</div>
+                <div id="observaciones_vta" class="info-value"></div>
+            </div>
+        </div>      
+
+        <div class="seccion">
+            <h3 style="color: #1e293b; margin-bottom: 16px;">Productos</h3>
+            <table id="detalle_cot" class="tabla_det">
+                <thead>
+                    <tr>
+                        <th class="text-left">Modelo</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-right">Precio Unitario</th>
+                        <th class="text-right">Total</th>
+                    </tr>
+                </thead>
+                <tbody id="rows_det_cot">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-section">
+            <div class="total-line">
+                <span><strong>Subtotal:</strong></span>
+                <span id="subtotal_vta"></span>
+            </div>
+            <div class="total-line">
+                <span><strong>IVA:</strong></span>
+                <span id="iva_vta"></span>
+            </div>
+            <div class="total-line total-amount">
+                <span><strong>TOTAL:</strong></span>
+                <span id="total_vta"></span>
+            </div>
+        </div>
+        <div class="footer">
+            <div></div> <!-- Espaciador -->
+            <button type="button" id="atras_btn" class="btn-atras">Atrás</button>
+        </div>
+    </div>
+
+    <script src="js/vtas.js"></script>
+</body>
+</html>

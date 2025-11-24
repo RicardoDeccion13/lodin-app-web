@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sistema de Ventas - Sidebar Mejorado</title>
-   <link rel="stylesheet" href="css/style2.css"> </head>
+  <title>Lodin Motors</title>
+   <link rel="stylesheet" href="css/style2.css"> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  </head>
+   
 <body>
 
   <!-- Sidebar Mejorado -->
@@ -17,100 +21,157 @@
       <ul>
         <li class="menu-item active">
           <span class="icon">
-            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24.3254 10.8738L14.1257 0.674438C13.691 0.239563 13.1131 0 12.4983 0C11.8836 0 11.3057 0.239372 10.8708 0.674248L0.678111 10.8667C-0.224828 11.775 -0.223302 13.2317 0.672198 14.1272C1.08132 14.5365 1.62168 14.7736 2.19941 14.7984H2.67682V22.3066C2.67682 23.7917 3.88513 25 5.37057 25H9.36036C9.76472 25 10.0928 24.6721 10.0928 24.2676V18.3838C10.0928 17.7061 10.644 17.1549 11.3217 17.1549H13.675C14.3527 17.1549 14.9039 17.7061 14.9039 18.3838V24.2676C14.9039 24.6721 15.2318 25 15.6363 25H19.6261C21.1115 25 22.3198 23.7917 22.3198 22.3066V14.8018H22.6967C23.3113 14.8018 23.8892 14.5624 24.3243 14.1275C25.2207 13.2305 25.2211 11.7714 24.3254 10.8738Z" fill="#B1B1B1"/>
-            </svg>
+            <i class="fas fa-home"></i>
           </span>
           <span class="label">Inicio</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" id="cotizaciones_menu">
           <span class="icon">
-              <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Base del documento similar a la casa -->
-                <path d="M18.5 4.5H6.5C5.94772 4.5 5.5 4.94772 5.5 5.5V19.5C5.5 20.0523 5.94772 20.5 6.5 20.5H18.5C19.0523 20.5 19.5 20.0523 19.5 19.5V5.5C19.5 4.94772 19.0523 4.5 18.5 4.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                <!-- Líneas de texto -->
-                <path d="M8.5 8.5H16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M8.5 11.5H16.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M8.5 14.5H13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <!-- Símbolo de dinero pequeño -->
-                <path d="M15.5 16.5C15.5 17.0523 15.0523 17.5 14.5 17.5C13.9477 17.5 13.5 17.0523 13.5 16.5C13.5 15.9477 13.9477 15.5 14.5 15.5C15.0523 15.5 15.5 15.9477 15.5 16.5Z" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
+            <i class="fas fa-file-invoice-dollar"></i>
           </span>
           <span class="label">Cotizaciones</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" id="ventas_menu">
           <span class="icon">
-            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Motor/Engranaje sólido para inventario -->
-              <path d="M12.5 2.5L15.5 5.5H9.5L12.5 2.5Z" fill="currentColor"/>
-              <rect x="7.5" y="5.5" width="10" height="4" fill="currentColor"/>
-              <path d="M5.5 9.5H19.5V13.5H5.5V9.5Z" fill="currentColor"/>
-              <rect x="8.5" y="13.5" width="2" height="3" fill="currentColor"/>
-              <rect x="14.5" y="13.5" width="2" height="3" fill="currentColor"/>
-              <path d="M5.5 16.5H19.5V19.5H5.5V16.5Z" fill="currentColor"/>
-              <circle cx="12.5" cy="18" r="1.5" fill="currentColor"/>
-            </svg>
+            <i class="fas fa-shopping-bag"></i>
+          </span>
+          <span class="label">Ventas</span>
+        </li>
+
+        <li class="menu-item" id="facturacion_menu">
+          <span class="icon">
+            <i class="fas fa-receipt fa-2x"></i>
+          </span>
+          <span class="label">Facturación</span>
+        </li>
+
+        <li class="menu-item" id="inventario">
+          <span class="icon">
+            <i class="fas fa-boxes"></i>
           </span>
           <span class="label">Inventario</span>
         </li>
 
-        <li class="menu-item">
+        <li class="menu-item" id="clientes_menu">
           <span class="icon">
-            <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-  <!-- Cabeza -->
-  <circle cx="50" cy="35" r="20" fill="#6B7280" stroke="#6B7280" stroke-width="1.5"/>
-  
-  <!-- Cuerpo -->
-  <path d="M 30 60 Q 50 85 70 60 L 70 95 L 30 95 Z" fill="#6B7280" stroke="#4B5563" stroke-width="1.5"/>
-</svg>
+            <i class="fas fa-users"></i>
           </span>
           <span class="label">Clientes</span>
         </li>
+        </ul>
       </nav>
       
     <div class="sidebar-footer">
       <div class="user-info">
-        <div class="user-avatar">RG</div>
+        <div class="user-avatar" id="iniciales"></div>
         <div class="user-details">
-          <div class="user-name">Ricardo Guerra</div>
-          <div class="user-role">Ventas</div>
+          <div class="user-name" id="usr"></div>
+          <div class="user-role" id="rol"></div>
         </div>
       </div>
     </div>
   </aside>
   
   <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="page-title">Inicio</div>
-  </div>
+<div class="top-bar">
+  <div class="page-title">Inicio</div>
+  <button class="logout-btn" title="Cerrar Sesión"  onclick="cerrarSesion();">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
+</div>
 
   <!-- Contenido Principal -->
   <main class="main-content">
     <!-- INICIO -->
     <section id="inicio" class="content-section active">
-      <h2>Bienvenido al Sistema de Ventas</h2>
-      
-      <div class="dashboard-cards" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin-top: 30px;">
-        <div style="background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 20px; border-radius: 10px;">
-          <h3>Ventas del Mes</h3>
-          <p style="font-size: 24px; font-weight: bold;">$45,680</p>
+        <div class="sales-section">
+            <div class="section-header">
+                <h2>Métricas mensuales</h2>
+            </div>
+            
+          <div class="dashboard-cards">
+                <!-- Total Sales Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Monto de ventas</h3>
+                        <div class="card-icon sales">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                    </div>
+                    <div class="card-value" id="monto_ventas"></div>
+                </div>
+                
+                <!-- Total Orders Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Cotizaciones pendientes</h3>
+                        <div class="card-icon orders">
+                          <i class="fas fa-file-invoice-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="card-value" id="cot_pnd"></div>
+                </div>
+                
+                <!-- Products Sold Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Ventas entregadas</h3>
+                        <div class="card-icon products">
+                          <i class="fas fa-check-circle"></i>                        
+                        </div>
+                    </div>
+                    <div class="card-value" id="vtn_ent"></div>
+                </div>
+                
+                <!-- New Customers Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Ventas en proceso</h3>
+                        <div class="card-icon customers">
+                          <i class="fas fa-truck-loading"></i>
+                        </div>
+                    </div>
+                    <div class="card-value" id="vta_proc"></div>
+                </div>
+            </div>
+
+            <!-- TOP PRODUCTS SECTION -->
+            <div class="top-products-section" id="grafica_clients">
+                <h2>Clientes que más compran</h2>
+                
+                <div class="products-list">
+                    <!-- Aquí se insertarán dinámicamente los clientes -->
+                </div>
+            </div>
+
+            <!-- TOTAL REVENUE SECTION -->
+            <div class="revenue-section">
+                <h2>Top Vendedores</h2>
+                <div class="chart-container">
+                    <div class="sellers-list">
+                        <!-- Aquí se insertarán dinámicamente los vendedores -->
+                    </div>
+                    </div>
+            </div>
+            </div>
         </div>
-        <div style="background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); color: white; padding: 20px; border-radius: 10px;">
-          <h3>Clientes Nuevos</h3>
-          <p style="font-size: 24px; font-weight: bold;">24</p>
-        </div>
-        <div style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); color: white; padding: 20px; border-radius: 10px;">
-          <h3>Cotizaciones Pendientes</h3>
-          <p style="font-size: 24px; font-weight: bold;">8</p>
-        </div>
-      </div>
     </section>
 
-    <!-- VENTAS Y COTIZACIONES -->
+    <!-- COTIZACIONES -->
     <section id="cotizaciones" class="content-section">
-      <iframe id="frame_cot" src="cotizaciones.html" style="width:100%; height:80vh; border:none;"></iframe>
+      <iframe src="cotizaciones.html" style="width:100%; height:80vh; border:none;"></iframe>
+    </section>
+
+    <!-- VENTAS -->
+    <section id="ventas" class="content-section">
+      <iframe src="ventas.html" style="width:100%; height:80vh; border:none;"></iframe>
+    </section>
+
+    <!-- FACTURACIÓN -->
+    <section id="facturacion" class="content-section">
+      <iframe src="facturacion.html" style="width:100%; height:80vh; border:none;"></iframe>
     </section>
 
     <!-- INVENTARIO -->
@@ -122,64 +183,9 @@
     <section id="clientes" class="content-section">
       <iframe src="clientes.html" style="width:100%; height:80vh; border:none;"></iframe>
     </section>
+
   </main>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuItems = document.querySelectorAll(".menu-item");
-      const sections = {
-          "Inicio": document.getElementById("inicio"),
-          "Inventario": document.getElementById("inventario"),
-          "Cotizaciones": document.getElementById("cotizaciones"),
-          "Clientes": document.getElementById("clientes")
-      };
-      const pageTitle = document.querySelector(".page-title");
-
-      menuItems.forEach(item => {
-            item.addEventListener("click", () => {
-                // Obtener el texto del label del menú
-                const sectionName = item.querySelector(".label").textContent;
-                
-                // Quitar active de todos los items del menú
-                menuItems.forEach(i => i.classList.remove("active"));
-                item.classList.add("active");
-
-                // Ocultar todas las secciones
-                Object.values(sections).forEach(section => {
-                    section.classList.remove("active");
-                });
-
-                // Mostrar la sección correspondiente
-                if (sections[sectionName]) {
-                    sections[sectionName].classList.add("active");
-                }
-
-                // Actualizar título
-                pageTitle.textContent = sectionName;
-            });
-      });
-    });
-
-    // Código para ocultar/mostrar la top bar al hacer scroll
-    let lastScroll = 0;
-    const topBar = document.querySelector(".top-bar");
-
-    window.addEventListener("scroll", () => {
-      const currentScroll = window.pageYOffset;
-
-      if (currentScroll > lastScroll && currentScroll > 70) {
-        // bajando
-        topBar.classList.add("hidden");
-      } else {
-        // subiendo
-        topBar.classList.remove("hidden");
-      }
-
-      lastScroll = currentScroll;
-    });
-
-
-
-  </script>
+  <script src="js/ind.js"></script>
 </body>
 </html>

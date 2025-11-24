@@ -9,13 +9,13 @@ router.post('/login', (req, res) => {
     return res.status(400).json({ error: 'Faltan datos' });
   }
 
-  const sql = 'SELECT * FROM USUARIO WHERE usuario = ? AND contrasenia = ?';
+  const sql = 'SELECT * FROM USUARIO U INNER JOIN AREA A ON U.id_area = A.id_area WHERE usuario = ? AND contrasenia = ?; ';
   db.query(sql, [correo, password], (err, results) => {
     if (err) {
       console.error('Error al ejecutar consulta:', err);
       return res.status(500).json({ error: 'Error en la base de datos' });
     }
-
+    console.log(results);
     if (results.length > 0) {
       res.json({ message: 'Login exitoso', usuario: results[0] });
     } else {
